@@ -18,7 +18,7 @@ def test_post_creation():
                                      json={
                                          "title": "Hello",
                                          "description": "World"
-                                         })
+                                     })
     assert response.status_code == 201
     # assert response.json() == {""}
 
@@ -38,12 +38,12 @@ def test_put_update():
                                      })
     todo_id = response.json()["result"]["id"]
 
-    response: Response = client.put(f"/todos/{todo_id}",
-                                    json={
-                                        "title": "Updated Title",
-                                        "description": "Updated Description",
-                                        "completed": True
-                                    })
+    response: Response = client.patch(f"/todos/{todo_id}",
+                                      json={
+                                          "title": "Updated Title",
+                                          "description": "Updated Description",
+                                          "completed": True
+                                      })
     assert response.status_code == 200
     assert "result" in response.json()
     assert response.json()["result"]["id"] == todo_id

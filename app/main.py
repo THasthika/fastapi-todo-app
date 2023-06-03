@@ -157,7 +157,7 @@ def create_todo(todo_manager: Annotated[
                     message="", result=created_todo)
 
 
-@app.put("/todos/{todo_id}", status_code=status.HTTP_200_OK)
+@app.patch("/todos/{todo_id}", status_code=status.HTTP_200_OK)
 def update_todo(todo_manager: Annotated[
                 TodoManager, Depends(get_todo_manager)],
                 todo_id: UUID, todo_update: TodoUpdate):
