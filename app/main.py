@@ -160,7 +160,7 @@ def create_todo(todo_manager: Annotated[
 @app.patch("/todos/{todo_id}", status_code=status.HTTP_200_OK)
 def update_todo(todo_manager: Annotated[
                 TodoManager, Depends(get_todo_manager)],
-                todo_id: UUID, todo_update: TodoUpdate):
+                todo_id: UUID, todo_update: TodoUpdate) -> Response[TodoModel]:
     updated_todo = todo_manager.update_todo(todo_id, todo_update)
     return Response(code=status.HTTP_200_OK, status="OK",
                     message="", result=updated_todo)
@@ -169,7 +169,7 @@ def update_todo(todo_manager: Annotated[
 @app.delete("/todos/{todo_id}", status_code=status.HTTP_200_OK)
 def delete_todo(todo_manager: Annotated[
                 TodoManager, Depends(get_todo_manager)],
-                todo_id: UUID):
+                todo_id: UUID) -> Response[TodoModel]:
     deleted_todo = todo_manager.delete_todo(todo_id)
     return Response(code=status.HTTP_200_OK, status="OK",
                     message="", result=deleted_todo)
