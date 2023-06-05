@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 from fastapi import Response
 
-from .main import app
+from .main import api_app as app
 
 client = TestClient(app)
 
@@ -20,7 +20,6 @@ def test_post_creation():
                                          "description": "World"
                                      })
     assert response.status_code == 201
-    # assert response.json() == {""}
 
 
 def test_post_listing():
