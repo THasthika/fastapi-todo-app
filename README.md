@@ -1,4 +1,4 @@
 # Part 02
 
-- Authentication using JWT
-- Modularising the Code
+- [x] Modularising the Code
+- [ ] Authentication using JWT
